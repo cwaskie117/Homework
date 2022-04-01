@@ -1,0 +1,57 @@
+using System;
+interface IPerson
+{
+int PayMoney(int amount);
+}
+class Person : IPerson
+{
+public int Money { get; set; }
+public Person()
+{
+this.Money = 10000;
+}
+public virtual int PayMoney(int amount)
+{
+this.Money = this.Money - amount;
+return this.Money;
+}
+}
+class Employee : Person
+{
+public int EmployeeID { get; set; }
+public Employee(int employeeID)
+{
+this.EmployeeID = id;
+}
+public override int PayMoney(int amount)
+{
+int tempMoney = (amount / 2);
+this.Money = this.Money - tempMoney;
+return this.Money;
+}
+public static void AddMoney(Person person, int amount)
+{
+person.Money = person.Money + amount;
+}
+}
+class Main
+{
+static void Main ()
+{
+Console.WriteLine ("-- Person Class Test Case --");
+Console.WriteLine();
+Person P = new Person();
+Console.WriteLine("Initial Money : "+P.Money);
+AddMoney(P,1000);
+Console.WriteLine("After Adding Money : "+P.Money);
+int money = P.PayMoney(100);
+Console.WriteLine("Final Money : "+money);
+Console.WriteLine();
+Console.WriteLine ("-- Employee Class Test Case --");
+Console.WriteLine();
+Employee E = new Employee(10);
+Console.WriteLine("Initial Money : "+E.Money);
+int employeemoney = E.PayMoney(9);
+Console.WriteLine("Final Money : "+employeemoney);
+}
+}
